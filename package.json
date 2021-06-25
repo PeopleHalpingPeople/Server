@@ -8,15 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JTaisey389/TwoWayChat-test.git"
+    "url": "git+https://github.com/PeopleHalpingPeople/Server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JTaisey389/TwoWayChat-test/issues"
+    "url": "https://github.com/PeopleHalpingPeople/Server/issues"
   },
-  "homepage": "https://github.com/JTaisey389/TwoWayChat-test#readme",
   "dependencies": {
     "bluebird": "^3.7.2",
     "chalk": "^4.1.1",
