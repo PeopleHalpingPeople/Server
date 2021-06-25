@@ -20,6 +20,7 @@ mongoose.connect(MONGODB_URI, { useNewParser: true, useUnifiedTopology: true }).
 
 // const io = new Server(PORT)
 const io = new Server(PORT, {cors: {origin: ['https://people-frontend401.herokuapp.com/']}})
+// const io = new Server(PORT, {cors: {origin: ['http://localhost:3001']}})
 
 io.on('connection', (socket) => {
   console.log('connected')
