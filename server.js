@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 const MONGODB_URI = process.env.MONGODB_URI;
 const { Server } = require('socket.io');
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 let users = [];
 
@@ -20,7 +20,7 @@ mongoose.connect(MONGODB_URI, { useNewParser: true, useUnifiedTopology: true }).
 
 // const io = new Server(PORT)
 // const io = new Server(PORT, {cors: {origin: ['https://people-frontend401.herokuapp.com/']}})
-// const io = new Server(PORT, {cors: {origin: ['http://localhost:3001']}})
+const io = new Server(PORT, {cors: {origin: ['http://localhost:3001']}})
 
 io.on('connection', (socket) => {
   console.log('connected')
