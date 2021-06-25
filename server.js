@@ -8,13 +8,13 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
-const mongoDB = process.env.MONGODB;
+const MONGODB_URI = process.env.MONGODB_URI;
 const { Server } = require('socket.io');
 const PORT = process.env.PORT || 3000;
 
 let users = [];
 
-mongoose.connect(mongoDB, { useNewParser: true, useUnifiedTopology: true }).then(() => {
+mongoose.connect(MONGODB_URI, { useNewParser: true, useUnifiedTopology: true }).then(() => {
   console.log('mongoDB is connected');
 }).catch(err => console.log(err));
 
