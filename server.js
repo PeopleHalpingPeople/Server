@@ -18,7 +18,7 @@ mongoose.connect(MONGODB_URI, { useNewParser: true, useUnifiedTopology: true }).
   console.log('mongoDB is connected');
 }).catch(err => console.log(err));
 
-const io = new Server(PORT, {cors: {origin: ['http://localhost:3001']}})
+const io = new Server(PORT)
 
 io.on('connection', (socket) => {
   console.log('connected')
