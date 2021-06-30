@@ -18,29 +18,23 @@ mongoose.connect(MONGODB_URI, { useNewParser: true, useUnifiedTopology: true }).
   console.log('mongoDB is connected');
 }).catch(err => console.log(err));
 
-// const io = new Server(PORT)
-// const io = new Server(PORT, {cors: {origin: ['https://people-frontend401.herokuapp.com/']}})
 const io = new Server(PORT, {cors: {origin: ['http://localhost:3001']}})
 
 io.on('connection', (socket) => {
   console.log('connected')
   
   socket.on('add user', async (event) => {
-    console.log('EVENT', event);
     users.push(event); 
     const allMessages = await Chat.find({ });
-    console.log('SOCKET ID', users)
     users[event] = event.socketID;
     socket.emit('message list', { currentUser: event, allMessages });
   });
 
   socket.on('message1',(event) => {
-    console.log('USER EVENT', event);
     const message = new Chat( event );
     message.save().then(() => {
       io.emit('message saved to db');
     })
-    console.log('MESS',message);
     socket.emit('message', message);
   });
 
@@ -50,9 +44,7 @@ io.on('connection', (socket) => {
       io.emit('message saved to db');
       console.log('message saved to DB');
     })
-    console.log('EVENT', message);
     io.to(users[message.privateReceiver]).emit('private message', message);
-    console.log('privateEVENT--', message);
     socket.emit('private message', message);
   });
 
